@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "552284990702",
+    "firebase_url": "https://rizq-90d18.firebaseio.com",
+    "project_id": "rizq-90d18",
+    "storage_bucket": "rizq-90d18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552284990702:android:b2c9451809265dea",
+        "android_client_info": {
+          "package_name": "com.example.talha.rizq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552284990702-i8bbun4n1vmeptcedoi0qvgbv6hesa6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.talha.rizq",
+            "certificate_hash": "fa8e89a57456b0782a55d2491ae508dd739bdb7c"
+          }
+        },
+        {
+          "client_id": "552284990702-p7avqfm880b1ssc8183rusdfeqki2492.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk-8vaG0qM1YLgTARkKyR6mB8mahNGEWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552284990702-p7avqfm880b1ssc8183rusdfeqki2492.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

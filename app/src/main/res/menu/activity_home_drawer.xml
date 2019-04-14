@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/usernav_myevents"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="My Events"
+            android:iconTint="@android:color/white" />
+        <item
+            android:id="@+id/usernav_mycases"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="My Support Cases"
+            android:iconTint="@android:color/white" />
+        <item
+            android:id="@+id/usernav_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Settings"
+            android:iconTint="@android:color/white" />
+        <item
+            android:id="@+id/usernav_logout"
+            android:icon="@drawable/logout"
+            android:title="Logout"
+            android:iconTint="@android:color/white" />
+    </group>
+
+
+
+</menu>
