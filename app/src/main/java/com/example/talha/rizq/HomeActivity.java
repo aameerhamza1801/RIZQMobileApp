@@ -234,6 +234,8 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.usernav_mycases) {
 
         } else if (id == R.id.usernav_settings) {
+            Intent intent = new Intent(HomeActivity.this,SettingsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.usernav_logout) {
             Paper.book().destroy();

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <LinearLayout
+        android:id="@+id/ll1_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="180dp">
+
+        <Switch
+            android:id="@+id/switch_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="50dp"
+            android:checked="false"
+            android:switchMinWidth="56dp"
+            android:switchPadding="100dp"
+            android:text="Notifications"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/switch_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="50dp"
+            android:checked="false"
+            android:switchMinWidth="56dp"
+            android:switchPadding="118dp"
+            android:text="Dark Mode"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
