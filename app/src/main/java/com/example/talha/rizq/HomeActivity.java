@@ -1,5 +1,6 @@
 package com.example.talha.rizq;
 
+import android.app.usage.UsageEvents;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -18,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.talha.rizq.Model.Events;
@@ -47,6 +51,63 @@ public class HomeActivity extends AppCompatActivity
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Events");
         Paper.init(this);
+        final EditText inputSearch = (EditText) findViewById(R.id.inputSearch);
+
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                System.out.println("Char :"+s);
+                if(s.toString().isEmpty()){
+                    onStart();
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                FirebaseRecyclerOptions<Events> options1 =
+                        new FirebaseRecyclerOptions.Builder<Events>()
+                                .setQuery(ProductsRef.orderByChild("location").startAt(s.toString()),Events.class)
+                                .build();
+
+                FirebaseRecyclerAdapter<Events,EventViewHolder> adapter1 =
+                        new FirebaseRecyclerAdapter<Events, EventViewHolder>(options1) {
+                            @Override
+                            protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull final Events model) {
+                                holder.event_desc.setText(model.getDescription());
+                                holder.event_loc.setText("Location :"+model.getLocation());
+                                holder.event_time.setText("Time : "+model.getTime());
+                                //Picasso.get().load(model.getImage()).into(holder.productImage);
+
+                                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(HomeActivity.this,EventDetailActivity.class);
+                                        intent.putExtra("eid",model.getEid());
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+
+                            @NonNull
+                            @Override
+                            public EventViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_user_layout, viewGroup,false);
+                                EventViewHolder holder = new EventViewHolder(view);
+                                return holder;
+                            }
+                        };
+                recyclerView.setAdapter(adapter1);
+                adapter1.startListening();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                System.out.println("Char1 :"+s);
+                if(s.toString().isEmpty()){
+                    onStart();
+                }
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
