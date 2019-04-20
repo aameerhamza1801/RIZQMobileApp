@@ -3,6 +3,7 @@ package com.example.talha.rizq.Model;
 public class Events {
 
     private String eid, description, location, time;
+    private long currentTime;
     public Events(){
 
     }
@@ -44,5 +45,9 @@ public class Events {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public long getCurrentTime() {
+        return System.currentTimeMillis();
     }
 }

@@ -1,11 +1,19 @@
 package com.example.talha.rizq;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.usage.UsageEvents;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -24,11 +32,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.talha.rizq.Global.GlobalVariables;
 import com.example.talha.rizq.Model.Events;
 import com.example.talha.rizq.Prevalent.Prevalent;
 import com.example.talha.rizq.ViewHolder.EventViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -52,6 +64,7 @@ public class HomeActivity extends AppCompatActivity
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Events");
         Paper.init(this);
         final EditText inputSearch = (EditText) findViewById(R.id.inputSearch);
+
 
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -150,6 +163,67 @@ public class HomeActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+        ProductsRef.addChildEventListener(new ChildEventListener() {
+
+            private long attachTime = System.currentTimeMillis();
+
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Events Event = dataSnapshot.getValue(Events.class);
+                System.out.println("Add "+dataSnapshot.getKey()+" to UI after "+s);
+                if(Event.getCurrentTime()>attachTime){
+                    addEventNotification(dataSnapshot.getKey());
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void addEventNotification(String key) {
+        final GlobalVariables noti = (GlobalVariables) getApplicationContext();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("EventNotifications","EventNotifications",NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"EventNotifications")
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setAutoCancel(true)
+                .setContentTitle("RIZQ Event")
+                .setContentText("A new Event has been added");
+        Intent intent = new Intent(this,EventDetailActivity.class);
+        intent.putExtra("eid",key);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        if(noti.getNotificationIsActive()){
+            NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+            manager.notify(0,builder.build());
+        }
     }
 
     @Override

@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginTop="50dp"
-            android:checked="false"
+            android:checked="true"
             android:switchMinWidth="56dp"
             android:switchPadding="100dp"
             android:text="Notifications"

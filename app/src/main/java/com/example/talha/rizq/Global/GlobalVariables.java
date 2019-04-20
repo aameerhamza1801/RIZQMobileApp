@@ -3,7 +3,7 @@ package com.example.talha.rizq.Global;
 import android.app.Application;
 
 public class GlobalVariables extends Application {
-    private Boolean notificationIsActive;
+    private Boolean notificationIsActive=true;
     private Boolean addedNewEvent;
 
     public Boolean getAddedNewEvent() {
