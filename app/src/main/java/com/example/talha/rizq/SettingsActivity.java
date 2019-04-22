@@ -20,6 +20,12 @@ public class SettingsActivity extends AppCompatActivity {
         notification = (Switch) findViewById(R.id.switch_notifications);
         dark = (Switch) findViewById(R.id.switch_dark);
         final GlobalVariables globalNotifications = (GlobalVariables) getApplicationContext();
+        if(globalNotifications.getNotificationIsActive()){
+            notification.setChecked(true);
+        }
+        else{
+            notification.setChecked(false);
+        }
 
         notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
