@@ -12,8 +12,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -32,6 +36,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.talha.rizq.Fragments_Tabs.tabPagesAdapter;
 import com.example.talha.rizq.Global.GlobalVariables;
 import com.example.talha.rizq.Model.Events;
 import com.example.talha.rizq.Prevalent.Prevalent;
@@ -52,88 +57,26 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private DatabaseReference ProductsRef;
-    private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Events");
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
+        ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager_home);
+
+        tabPagesAdapter PagerAdapter = new tabPagesAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(PagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
         Paper.init(this);
-        final EditText inputSearch = (EditText) findViewById(R.id.inputSearch);
 
-
-        inputSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                System.out.println("Char :"+s);
-                if(s.toString().isEmpty()){
-                    onStart();
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                FirebaseRecyclerOptions<Events> options1 =
-                        new FirebaseRecyclerOptions.Builder<Events>()
-                                .setQuery(ProductsRef.orderByChild("location").startAt(s.toString()),Events.class)
-                                .build();
-
-                FirebaseRecyclerAdapter<Events,EventViewHolder> adapter1 =
-                        new FirebaseRecyclerAdapter<Events, EventViewHolder>(options1) {
-                            @Override
-                            protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull final Events model) {
-                                holder.event_desc.setText(model.getDescription());
-                                holder.event_loc.setText("Location :"+model.getLocation());
-                                holder.event_time.setText("Time : "+model.getTime());
-                                //Picasso.get().load(model.getImage()).into(holder.productImage);
-
-                                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Intent intent = new Intent(HomeActivity.this,EventDetailActivity.class);
-                                        intent.putExtra("eid",model.getEid());
-                                        startActivity(intent);
-                                    }
-                                });
-                            }
-
-                            @NonNull
-                            @Override
-                            public EventViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_user_layout, viewGroup,false);
-                                EventViewHolder holder = new EventViewHolder(view);
-                                return holder;
-                            }
-                        };
-                recyclerView.setAdapter(adapter1);
-                adapter1.startListening();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                System.out.println("Char1 :"+s);
-                if(s.toString().isEmpty()){
-                    onStart();
-                }
-            }
-        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -158,113 +101,9 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-
-        recyclerView = findViewById(R.id.event_recycler_menu);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        ProductsRef.addChildEventListener(new ChildEventListener() {
-
-            private long attachTime = System.currentTimeMillis();
-
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Events Event = dataSnapshot.getValue(Events.class);
-                System.out.println("Add "+dataSnapshot.getKey()+" to UI after "+s);
-                if(Event.getCurrentTime()>attachTime){
-                    addEventNotification(dataSnapshot.getKey());
-                }
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
     }
 
-    private void addEventNotification(String key) {
-        final GlobalVariables noti = (GlobalVariables) getApplicationContext();
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel("EventNotifications","EventNotifications",NotificationManager.IMPORTANCE_DEFAULT);
 
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"EventNotifications")
-                .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setAutoCancel(true)
-                .setContentTitle("RIZQ Event")
-                .setContentText("A new Event has been added");
-        Intent intent = new Intent(this,EventDetailActivity.class);
-        intent.putExtra("eid",key);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pendingIntent);
-        if(noti.getNotificationIsActive()){
-            NotificationManagerCompat manager = NotificationManagerCompat.from(this);
-            manager.notify(0,builder.build());
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseRecyclerOptions<Events> options =
-                new FirebaseRecyclerOptions.Builder<Events>().setQuery(ProductsRef , Events.class)
-                        .build();
-
-        FirebaseRecyclerAdapter<Events, EventViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Events, EventViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull final Events model) {
-                        holder.event_desc.setText(model.getDescription());
-                        holder.event_loc.setText("Location :"+model.getLocation());
-                        holder.event_time.setText("Time : "+model.getTime());
-                        //Picasso.get().load(model.getImage()).into(holder.productImage);
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(HomeActivity.this,EventDetailActivity.class);
-                                intent.putExtra("eid",model.getEid());
-                                startActivity(intent);
-                            }
-                        });
-                    }
-
-                    @NonNull
-                    @Override
-                    public EventViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_user_layout, viewGroup,false);
-                        EventViewHolder holder = new EventViewHolder(view);
-                        return holder;
-                    }
-                };
-
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-    }
 
     @Override
     public void onBackPressed() {
