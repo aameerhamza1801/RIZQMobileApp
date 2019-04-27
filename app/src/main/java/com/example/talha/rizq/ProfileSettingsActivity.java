@@ -17,6 +17,7 @@ import com.example.talha.rizq.Prevalent.Prevalent;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,6 +83,11 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             }
         });
 
+        Picasso.get().load(Prevalent.currentUser.getImage()).placeholder(R.drawable.profile).into(profile_image);
+        username.setText(Prevalent.currentUser.getUsername());
+        fullname.setText(Prevalent.currentUser.getFullname());
+        email.setText(Prevalent.currentUser.getEmail());
+        phone.setText(Prevalent.currentUser.getPhone());
         change_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,25 +207,30 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
     private void UserInfoDisplay(final CircleImageView profile_image, final EditText username, final EditText fullname, final EditText email, final EditText phone) {
         DatabaseReference UserRef = FirebaseDatabase.getInstance().getReference().child(Prevalent.currentUser.getUsername());
+        System.out.println(Prevalent.currentUser.getUsername());
+
+
         UserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    if(dataSnapshot.child("image").exists()){
+                if(dataSnapshot.exists()) {
+                    if (dataSnapshot.child("image").exists()) {
                         String image = dataSnapshot.child("image").getValue().toString();
-                        String uname = dataSnapshot.child("username").getValue().toString();
-                        String fname = dataSnapshot.child("fullname").getValue().toString();
-                        String eml = dataSnapshot.child("image").getValue().toString();
-                        String phn = dataSnapshot.child("image").getValue().toString();
 
                         Picasso.get().load(image).into(profile_image);
-                        username.setText(uname);
-                        fullname.setText(fname);
-                        email.setText(eml);
-                        phone.setText(phn);
+
                     }
+                    String uname = dataSnapshot.child("username").getValue().toString();
+                    String fname = dataSnapshot.child("fullname").getValue().toString();
+                    String eml = dataSnapshot.child("image").getValue().toString();
+                    String phn = dataSnapshot.child("phone").getValue().toString();
+                    username.setText(uname);
+                    fullname.setText(fname);
+                    email.setText(eml);
+                    phone.setText(phn);
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

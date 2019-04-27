@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    app:cardElevation="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/user_case_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="2dp"
+            />
+        <TextView
+            android:id="@+id/user_case_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Needy Name"
+            android:textAlignment="center"
+            android:layout_below="@+id/user_case_image"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <TextView
+            android:id="@+id/user_case_description"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/user_case_name"
+            android:text="Description"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <TextView
+            android:id="@+id/user_case_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_case_description"
+            android:text="Account"
+            android:layout_marginTop="2dp"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimary"
+            />
+        <LinearLayout
+            android:id="@+id/ll_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_case_account"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/user_case_account"
+            android:text="Amount Collected :"
+            android:layout_marginTop="2dp"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimary"
+            />
+            <TextView
+                android:id="@+id/user_case_amount"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/user_case_account"
+                android:text=" 15000  /  30000"
+                android:layout_marginTop="2dp"
+                android:textAlignment="textStart"
+                android:layout_marginLeft="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

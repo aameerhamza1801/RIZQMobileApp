@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewCase">
+
+    <ImageView
+        android:id="@+id/add_case_image"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/add_case_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_case_image"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:hint="Add Needy Name Here"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/input_text_design"/>
+    <EditText
+        android:id="@+id/add_case_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_case_name"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:hint="Add Description Here"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/input_text_design"/>
+    <EditText
+        android:id="@+id/add_case_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_case_description"
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:hint="Add Account Number Here"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/input_text_design"/>
+    <EditText
+        android:id="@+id/add_case_cnic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_case_account"
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:hint="Add Your CNIC Here"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/input_text_design"/>
+    <EditText
+        android:id="@+id/add_case_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_case_cnic"
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:hint="Add Amount To be Collected Here"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/input_text_design"/>
+
+    <Button
+        android:id="@+id/add_case_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_case_amount"
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="ADD CASE"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/buttons"/>
+
+
+
+</RelativeLayout>

@@ -77,6 +77,10 @@ public class HomeActivity extends AppCompatActivity
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
+        int defaultValue = 0;
+        int page = getIntent().getIntExtra("add_case", defaultValue);
+        viewPager.setCurrentItem(page);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     app:cardElevation="15dp">
@@ -14,7 +15,7 @@
 
         <TextView
             android:id="@+id/myevent_desc"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Event Description"
             android:textColor="@android:color/white"
@@ -24,21 +25,23 @@
 
         <TextView
             android:id="@+id/myevent_loc"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/myevent_desc"
             android:text="Event Location"
             android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/myevent_time"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/myevent_loc"
             android:text="Event Time"
             android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"
             android:textStyle="bold"/>
