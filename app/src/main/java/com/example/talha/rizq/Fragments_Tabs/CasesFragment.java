@@ -165,7 +165,7 @@ public class CasesFragment extends Fragment {
 
         FirebaseRecyclerOptions<Cases> options =
                 new FirebaseRecyclerOptions.Builder<Cases>()
-                        .setQuery(CasesRef, Cases.class)
+                        .setQuery(CasesRef.orderByChild("verified").equalTo("1"), Cases.class)
                         .build();
 
 
@@ -174,20 +174,22 @@ public class CasesFragment extends Fragment {
                     @Override
                     protected void onBindViewHolder(@NonNull CasesViewHolder holder, int position, @NonNull final Cases model)
                     {
-                        holder.case_name.setText(model.getNeedy_name());
-                        holder.case_desc.setText(model.getDescription());
-                        holder.case_account.setText(model.getAccount());
-                        holder.case_amount.setText(" "+model.getCollected_amount()+ "  /  "+model.getNeeded_amount());
-                        Picasso.get().load(model.getImage()).into(holder.case_image);
+                            holder.case_name.setText(model.getNeedy_name());
+                            holder.case_desc.setText(model.getDescription());
+                            holder.case_account.setText(model.getAccount());
+                            holder.case_amount.setText(" " + model.getCollected_amount() + "  /  " + model.getNeeded_amount());
+                            Picasso.get().load(model.getImage()).into(holder.case_image);
 
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(getActivity(),CasesDetailActivity.class);
-                                intent.putExtra("cid",model.getCid());
-                                startActivity(intent);
-                            }
-                        });
+
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(getActivity(), CasesDetailActivity.class);
+                                    intent.putExtra("cid", model.getCid());
+                                    startActivity(intent);
+                                }
+                            });
+
                     }
 
                     @NonNull
