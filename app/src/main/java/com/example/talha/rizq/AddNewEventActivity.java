@@ -99,7 +99,7 @@ public class AddNewEventActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     loadingBar.dismiss();
                     Toast.makeText(AddNewEventActivity.this, "Event added Successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddNewEventActivity.this,AdminEventsActivity.class);
+                    Intent intent = new Intent(AddNewEventActivity.this,AdminHomeNavActivity.class);
                     startActivity(intent);
                 }
                 else {

@@ -1,5 +1,6 @@
 package com.example.talha.rizq;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,12 +39,59 @@ public class AdminEventsDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deleteEvent();
+                Intent intent = new Intent(AdminEventsDetailActivity.this,AdminHomeNavActivity.class);
+                startActivity(intent);
             }
         });
 
     }
 
     private void deleteEvent() {
+
+        DatabaseReference EventRef = FirebaseDatabase.getInstance().getReference().child("Events");
+        EventRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren())
+                {
+                    if (child.getKey().toString().equals(eid) ){
+                        child.getRef().removeValue();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+            DatabaseReference myEventRef = FirebaseDatabase.getInstance().getReference().child("My Events").child("Users");
+            myEventRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren())
+                    {
+                        for (DataSnapshot grandChild : child.child("myEvents").getChildren())
+                        {
+                            if (grandChild.getKey().toString().equals(eid) ){
+                                grandChild.getRef().removeValue();
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
     }
 
 
