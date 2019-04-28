@@ -52,6 +52,7 @@ public class myCasesActivity extends AppCompatActivity {
         super.onStart();
 
         final DatabaseReference mycasesListRef = FirebaseDatabase.getInstance().getReference().child("My Events");
+        final DatabaseReference casesRef =  FirebaseDatabase.getInstance().getReference().child("Cases");
 
         FirebaseRecyclerOptions<Cases> options = new FirebaseRecyclerOptions.Builder<Cases>()
                 .setQuery(mycasesListRef.child("Users")
@@ -98,6 +99,15 @@ public class myCasesActivity extends AppCompatActivity {
                                                         total_cases.setText(String.valueOf(numCases));
                                                         Toast.makeText(myCasesActivity.this, "Case Removed Succesfully", Toast.LENGTH_SHORT).show();
 
+                                                    }
+                                                }
+                                            });
+                                    casesRef.child(model.getCid()).removeValue()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(myCasesActivity.this, "Case Removed Succesfully", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             });
