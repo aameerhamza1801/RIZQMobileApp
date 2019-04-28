@@ -25,8 +25,10 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
 
     private TextView cd_name, cd_description, cd_cnic, cd_account, cd_amount;
     private ImageView cd_image;
-    private Button verify, reject;
+    private Button verify, reject, verified;
     private String cid = "";
+    private int ver = 0;
+    private boolean task1=false,task2 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,34 +46,64 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
         cd_image = (ImageView)findViewById(R.id.admin_case_detail_image);
         verify = (Button) findViewById(R.id.admin_verify);
         reject = (Button) findViewById(R.id.admin_reject);
+        verified = (Button) findViewById(R.id.admin_verified);
 
         final DatabaseReference CaseRef = FirebaseDatabase.getInstance().getReference().child("Cases");
 
 
         getCasesDetails(cid);
 
-        verify.setOnClickListener(new View.OnClickListener() {
+        /*CaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                try{
-                    CaseRef.child(cid).child("verified").setValue("1");
-                    Intent intent = new Intent(AdminCasesDetailActivity.this,AdminHomeNavActivity.class);
-                    startActivity(intent);
-                }catch (Exception e){
-                    e.printStackTrace();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(cid).child("verified").getValue().toString().equals("0")){
+                    ver = 0;
+                    verified.setVisibility(View.INVISIBLE);
+                    verify.setVisibility(View.VISIBLE);
+                    reject.setVisibility(View.VISIBLE);
+                }
+                else{
+                    ver = 1;
+                    verified.setVisibility(View.VISIBLE);
+                    verify.setVisibility(View.INVISIBLE);
+                    reject.setVisibility(View.INVISIBLE);
                 }
             }
-        });
 
-        reject.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                deleteCase();
-                Intent intent = new Intent(AdminCasesDetailActivity.this,AdminHomeNavActivity.class);
-                startActivity(intent);
-            }
-        });
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });*/
+
+
+        //if(ver==0) {
+            verify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        CaseRef.child(cid).child("verified").setValue("1");
+                        Intent intent = new Intent(AdminCasesDetailActivity.this, AdminHomeNavActivity.class);
+                        intent.putExtra("add_case", 2);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            reject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteCase();
+                    if(task1 & task2) {
+                        Intent intent = new Intent(AdminCasesDetailActivity.this, AdminHomeNavActivity.class);
+                        intent.putExtra("add_case", 2);
+                        startActivity(intent);
+                    }
+                }
+            });
+       // }
 
 
     }
@@ -88,6 +120,7 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
                         child.getRef().removeValue();
                     }
                 }
+                task1 = true;
 
             }
 
@@ -96,10 +129,6 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
         DatabaseReference myCaseRef = FirebaseDatabase.getInstance().getReference().child("My Events").child("Users");
         myCaseRef.addValueEventListener(new ValueEventListener() {
@@ -114,6 +143,7 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
                         }
                     }
                 }
+                task2 = true;
             }
 
             @Override

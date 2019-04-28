@@ -43,7 +43,8 @@
         <activity
             android:name=".AdminHomeNavActivity"
             android:label="@string/title_activity_admin_home_nav"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".AdminCasesDetailActivity" />
         <activity android:name=".AdminEventsDetailActivity"></activity>
     </application>

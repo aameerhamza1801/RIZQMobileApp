@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.talha.rizq.AddNewCase;
@@ -52,6 +53,9 @@ public class AdminEventsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         EventsRef = FirebaseDatabase.getInstance().getReference().child("Events");
 
         final EditText inputSearch = (EditText) view.findViewById(R.id.admin_events_inputSearch);

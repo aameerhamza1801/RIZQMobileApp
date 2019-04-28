@@ -2,6 +2,7 @@ package com.example.talha.rizq;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView admin, not_admin, forgot;
     private ProgressDialog loadingBar;
     private String parentDbName="Users";
+    SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,9 +126,11 @@ public class LoginActivity extends AppCompatActivity {
                             else if (parentDbName=="Users"){
                                 Toast.makeText(LoginActivity.this,"Logged In Successfully.",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
+
                                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                 Prevalent.currentUser = usersData;
                                 startActivity(intent);
+
                             }
                         }
                         else{
