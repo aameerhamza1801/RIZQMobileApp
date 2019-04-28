@@ -56,5 +56,20 @@
         android:text="Logout"
         android:textColor="@android:color/white"
         />
+    <Button
+        android:id="@+id/admin_nave_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/admin_logout"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Nav"
+        android:textColor="@android:color/white"
+        />
 
 </RelativeLayout>

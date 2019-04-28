@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminCasesDetailActivity">
+
+    <ImageView
+        android:id="@+id/admin_case_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="2dp"/>
+    <TextView
+        android:id="@+id/admin_case_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Needy Name"
+        android:textAlignment="center"
+        android:layout_below="@+id/admin_case_detail_image"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        />
+    <TextView
+        android:id="@+id/admin_case_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:text="Description"
+        android:textAlignment="viewStart"
+        android:padding="10dp"
+        android:layout_below="@+id/admin_case_detail_name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        />
+    <TextView
+        android:id="@+id/admin_case_detail_cnic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CNIC"
+        android:padding="2dp"
+        android:layout_below="@+id/admin_case_detail_description"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        />
+    <TextView
+        android:id="@+id/admin_case_detail_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account"
+        android:padding="2dp"
+        android:layout_below="@+id/admin_case_detail_cnic"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        />
+    <TextView
+        android:id="@+id/admin_case_detail_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Amount Collected/Amount Remaining"
+        android:padding="2dp"
+        android:layout_below="@+id/admin_case_detail_account"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary" />
+    <RelativeLayout
+        android:id="@+id/ll_admin_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/admin_case_detail_amount">
+
+        <Button
+            android:id="@+id/admin_reject"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/holo_red_dark"
+            android:text="Reject"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/admin_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="Verify"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</RelativeLayout>
