@@ -149,6 +149,8 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.usernav_mycases) {
+            Intent intent = new Intent(HomeActivity.this,myCasesActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.usernav_settings) {
             Intent intent = new Intent(HomeActivity.this,SettingsActivity.class);

@@ -37,7 +37,9 @@
         <activity android:name=".AddNewEventActivity" />
         <activity android:name=".myEventsActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".AddNewCase"></activity>
+        <activity android:name=".AddNewCase" />
+        <activity android:name=".CasesDetailActivity" />
+        <activity android:name=".myCasesActivity"></activity>
     </application>
 
 </manifest>

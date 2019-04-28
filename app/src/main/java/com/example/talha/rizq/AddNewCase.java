@@ -16,6 +16,7 @@ import android.widget.TabWidget;
 import android.widget.Toast;
 
 import com.example.talha.rizq.Fragments_Tabs.CasesFragment;
+import com.example.talha.rizq.Prevalent.Prevalent;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -221,7 +222,7 @@ public class AddNewCase extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
-                            Toast.makeText(AddNewCase.this, "New Intent Coming...", Toast.LENGTH_SHORT).show();
+                            addToMyCases();
 
                             Intent intent = new Intent(AddNewCase.this, HomeActivity.class);
                             intent.putExtra("add_case", 3);
@@ -235,6 +236,47 @@ public class AddNewCase extends AppCompatActivity {
                             loadingBar.dismiss();
                             String message = task.getException().toString();
                             Toast.makeText(AddNewCase.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+    }
+    private void addToMyCases() {
+
+        final DatabaseReference myCases = FirebaseDatabase.getInstance().getReference().child("My Events");
+
+        final HashMap<String,Object> mycasesMap = new HashMap<>();
+        mycasesMap.put("cid", CaseRandomKey);
+        mycasesMap.put("needy_name", Name);
+        mycasesMap.put("description", Description);
+        mycasesMap.put("cnic", CNIC);
+        mycasesMap.put("image", imageUrl);
+        mycasesMap.put("account", Account);
+        mycasesMap.put("needed_amount", Needed_Amount);
+        mycasesMap.put("collected_amount", Collected_Amount);
+        mycasesMap.put("verified", Verified);
+
+        myCases.child("Users").child(Prevalent.currentUser.getUsername()).child("myCases")
+                .child(CaseRandomKey).updateChildren(mycasesMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+
+                            myCases.child("Admins").child(Prevalent.currentUser.getUsername()).child("myCases")
+                                    .child(CaseRandomKey).updateChildren(mycasesMap)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                Toast.makeText(AddNewCase.this, "Added to My Cases List", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(AddNewCase.this,HomeActivity.class);
+                                                intent.putExtra("add_case", 3);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    });
+
                         }
                     }
                 });
