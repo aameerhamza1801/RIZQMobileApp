@@ -1,14 +1,22 @@
 package com.example.talha.rizq;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.talha.rizq.Model.Cases;
 import com.example.talha.rizq.Model.Events;
+import com.example.talha.rizq.Prevalent.Prevalent;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +49,39 @@ public class CasesDetailActivity extends AppCompatActivity {
 
 
         getCasesDetails(cid);
+
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                CharSequence options[] = new CharSequence[]{
+                        "Paypal",
+                        "Jazz Cash",
+                        "Through Rizq"
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(CasesDetailActivity.this);
+                builder.setTitle("Payment Options :");
+
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(which == 0){
+                            Intent intent = new Intent(CasesDetailActivity.this,PaypalPaymentActivity.class);
+                            startActivity(intent);
+                        }
+                        else if(which == 1){
+                            Intent intent = new Intent(CasesDetailActivity.this,JazzCashActivity.class);
+                            startActivity(intent);
+                        }
+                        else if(which == 2){
+
+                        }
+                    }
+                });
+                builder.show();
+            }
+        });
 
 
     }

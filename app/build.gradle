@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.nex3z:notification-badge:0.1.0'
 
     implementation 'me.spark:submitbutton:1.0.1'
+
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.15.3'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -44,9 +44,12 @@
             android:name=".AdminHomeNavActivity"
             android:label="@string/title_activity_admin_home_nav"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".AdminCasesDetailActivity" />
-        <activity android:name=".AdminEventsDetailActivity"></activity>
+        <activity android:name=".AdminEventsDetailActivity" />
+        <activity android:name=".PaypalPaymentActivity" />
+        <activity android:name=".PaypalPaymentDetailsActivity" />
+        <activity android:name=".JazzCashActivity"></activity>
     </application>
 
 </manifest>
