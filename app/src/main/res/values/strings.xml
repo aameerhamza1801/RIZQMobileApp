@@ -11,4 +11,26 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_admin_home_nav">AdminHomeNavActivity</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Dial  *786#</string>
+
+    <string name="slide_2_title">Select "Send Money"</string>
+
+    <string name="slide_3_title">Select ‘To Mobile Account’</string>
+
+    <string name="slide_4_title">Select Operator</string>
+
+    <string name="slide_5_title">Enter Receiver’s Account Number</string>
+
+    <string name="slide_6_title">Enter Amount</string>
+
+    <string name="slide_7_title">In case of other operator Mobile Account, enter receiver’s Mobile Number</string>
+
+    <string name="slide_8_title">Review transaction and enter MPIN to confirm</string>
+
+
 </resources>
