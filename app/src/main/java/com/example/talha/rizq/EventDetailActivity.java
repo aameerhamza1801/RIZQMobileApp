@@ -28,6 +28,8 @@ public class EventDetailActivity extends AppCompatActivity {
     private TextView event_desc, event_loc, event_time;
     private Button volunteer;
     private String eid = "";
+    private int already = 0;
+    private Boolean task1 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +45,37 @@ public class EventDetailActivity extends AppCompatActivity {
 
         getEventDetails(eid);
 
-        volunteer.setOnClickListener(new View.OnClickListener() {
+        final DatabaseReference myEvents1 = FirebaseDatabase.getInstance().getReference().child("My Events").
+                child("Users").child(Prevalent.currentUser.getUsername()).child("myEvents").child(eid);
+        myEvents1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                addToMyEvents();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    volunteer.setVisibility(View.INVISIBLE);
+
+                    already = 1;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+            if (already == 0) {
+                volunteer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addToMyEvents();
+                    }
+                });
+            }
     }
+
+
+
+
 
     private void addToMyEvents() {
         String currentDate, currentTime;

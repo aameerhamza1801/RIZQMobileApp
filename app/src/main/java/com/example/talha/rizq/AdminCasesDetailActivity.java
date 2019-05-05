@@ -53,7 +53,7 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
 
         getCasesDetails(cid);
 
-        /*CaseRef.addValueEventListener(new ValueEventListener() {
+        CaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.child(cid).child("verified").getValue().toString().equals("0")){
@@ -74,10 +74,10 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
 
-        //if(ver==0) {
+        if(ver==0) {
             verify.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -103,7 +103,7 @@ public class AdminCasesDetailActivity extends AppCompatActivity {
                     }
                 }
             });
-       // }
+        }
 
 
     }
