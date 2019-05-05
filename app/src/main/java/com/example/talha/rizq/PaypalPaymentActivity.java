@@ -24,6 +24,9 @@ import java.math.BigDecimal;
 public class PaypalPaymentActivity extends AppCompatActivity {
 
     public static final int PAYPAL_REQUEST_CODE = 7171;
+    private String cid = "";
+
+
     private static PayPalConfiguration configuration= new PayPalConfiguration().
             environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).
             clientId(Config.PAYPAL_CLIENT_ID);
@@ -36,6 +39,8 @@ public class PaypalPaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paypal_payment);
 
+
+        cid = getIntent().getStringExtra("cid");
 
         // Start Paypal Service
         Intent intent = new Intent(this,PayPalService.class);
@@ -76,7 +81,8 @@ public class PaypalPaymentActivity extends AppCompatActivity {
 
                         startActivity(new Intent(this,PaypalPaymentDetailsActivity.class).
                                 putExtra("Payment Details",paymentDetails).
-                                putExtra("Payment Amount",amt)
+                                putExtra("Payment Amount",amt).
+                                putExtra("cid",cid)
                         );
                     } catch (JSONException e) {
                         e.printStackTrace();

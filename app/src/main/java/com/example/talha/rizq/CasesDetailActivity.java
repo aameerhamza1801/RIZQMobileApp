@@ -68,10 +68,12 @@ public class CasesDetailActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         if(which == 0){
                             Intent intent = new Intent(CasesDetailActivity.this,PaypalPaymentActivity.class);
+                            intent.putExtra("cid",cid);
                             startActivity(intent);
                         }
                         else if(which == 1){
                             Intent intent = new Intent(CasesDetailActivity.this,JazzCashActivity.class);
+                            intent.putExtra("cid",cid);
                             startActivity(intent);
                         }
                         else if(which == 2){

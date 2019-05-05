@@ -28,12 +28,17 @@ public class JazzCashActivity extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
+    private String cid = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jazz_cash);
+
+
+
+        cid = getIntent().getStringExtra("cid");
 
 
         // Checking for first time launch - before calling setContentView()
@@ -127,7 +132,8 @@ public class JazzCashActivity extends AppCompatActivity {
     private void launchDialPad() {
         prefManager.setFirstTimeLaunch(false);
 
-        Intent intent1 = new Intent(this,HomeActivity.class);
+        Intent intent1 = new Intent(this,CasesDetailActivity.class);
+        intent1.putExtra("cid",cid);
         startActivity(intent1);
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:*786"+"%23"));
