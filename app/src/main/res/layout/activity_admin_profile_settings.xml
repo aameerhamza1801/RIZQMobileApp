@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileSettingsActivity">
+    tools:context=".AdminProfileSettingsActivity">
+
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/ab_psettings"
+        android:id="@+id/ab_psettings_admin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_psettings"
+            android:id="@+id/tb_psettings_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -20,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
-                    android:id="@+id/close_psettings"
+                    android:id="@+id/close_psettings_admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Close"
@@ -29,7 +30,7 @@
                     android:textStyle="bold"
                     android:layout_alignParentStart="true"/>
                 <TextView
-                    android:id="@+id/update_psettings"
+                    android:id="@+id/update_psettings_admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Update"
@@ -46,54 +47,54 @@
     </android.support.design.widget.AppBarLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image_psettings"
+        android:id="@+id/image_psettings_admin"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_below="@+id/ab_psettings"
+        android:layout_below="@+id/ab_psettings_admin"
         android:layout_marginTop="20dp"
         android:src="@drawable/profile"
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/change_image_psettings"
+        android:id="@+id/change_image_psettings_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Image"
-        android:layout_below="@+id/image_psettings"
+        android:layout_below="@+id/image_psettings_admin"
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
         android:layout_marginRight="10dp"
         android:layout_centerHorizontal="true"/>
     <TextView
-        android:id="@+id/username_psettings"
+        android:id="@+id/username_psettings_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/change_image_psettings"
+        android:layout_below="@+id/change_image_psettings_admin"
         android:textSize="25dp"
         android:text="Username"
         android:textStyle="bold"
         android:layout_margin="15dp"/>
     <EditText
-        android:id="@+id/fullname_psettings"
+        android:id="@+id/fullname_psettings_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username_psettings"
+        android:layout_below="@+id/username_psettings_admin"
         android:hint="Full Name"
         android:layout_margin="15dp"/>
     <EditText
-        android:id="@+id/email_psettings"
+        android:id="@+id/email_psettings_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fullname_psettings"
+        android:layout_below="@+id/fullname_psettings_admin"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:layout_margin="15dp"/>
     <EditText
-        android:id="@+id/phone_psettings"
+        android:id="@+id/phone_psettings_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email_psettings"
+        android:layout_below="@+id/email_psettings_admin"
         android:hint="Phone #"
         android:inputType="number"
         android:layout_margin="15dp"/>

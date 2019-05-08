@@ -2,6 +2,7 @@ package com.example.talha.rizq;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -21,6 +22,11 @@ import android.widget.TextView;
 import com.example.talha.rizq.Fragments_Tabs.adminTabPagesAdapter;
 import com.example.talha.rizq.Fragments_Tabs.tabPagesAdapter;
 import com.example.talha.rizq.Prevalent.Prevalent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -62,20 +68,36 @@ public class AdminHomeNavActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_admin);
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
         TextView username = headerView.findViewById(R.id.profile_name_admin);
-        CircleImageView userImage = headerView.findViewById(R.id.profile_image_admin);
+        final CircleImageView userImage = headerView.findViewById(R.id.profile_image_admin);
+
+        DatabaseReference CImageRef = FirebaseDatabase.getInstance().getReference().child("Admins").
+                child(Prevalent.currentUser.getUsername());
+        CImageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("image").exists()){
+                    Picasso.get().load(Prevalent.currentUser.getImage()).placeholder(R.drawable.profile).into(userImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         username.setText(Prevalent.currentUser.getUsername());
-        Picasso.get().load(Prevalent.currentUser.getImage()).placeholder(R.drawable.profile).into(userImage);
+
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(AdminHomeNavActivity.this,AdminProfileSettingsActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(AdminHomeNavActivity.this,AdminProfileSettingsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -83,11 +105,14 @@ public class AdminHomeNavActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_admin);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
         }
     }
 
@@ -118,14 +143,21 @@ public class AdminHomeNavActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.adminnav_add_admin) {
-            // Handle the camera action
+            Intent intent = new Intent(AdminHomeNavActivity.this,AddNewAdminActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.adminnav_settings) {
 
         } else if (id == R.id.adminnav_logout) {
+            Paper.book().destroy();
+            Intent intent = new Intent(AdminHomeNavActivity.this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK  | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_admin);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
