@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="#f3feaf"
         android:padding="10dp">
 
         <TextView
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Event Description"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"
             android:textStyle="bold"/>
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/myevent_desc"
             android:text="Event Location"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_marginTop="10dp"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/myevent_loc"
             android:text="Event Time"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_marginTop="10dp"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"

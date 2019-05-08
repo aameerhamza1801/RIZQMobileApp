@@ -22,7 +22,7 @@
         android:textSize="20dp"
         android:padding="10dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#1b8d1b"
         />
     <TextView
         android:id="@+id/user_case_detail_description"
@@ -34,7 +34,7 @@
         android:layout_below="@+id/user_case_detail_name"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#1b8d1b"
         />
     <TextView
         android:id="@+id/user_case_detail_cnic"
@@ -45,7 +45,7 @@
         android:layout_below="@+id/user_case_detail_description"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#1b8d1b"
         />
     <TextView
         android:id="@+id/user_case_detail_account"
@@ -56,7 +56,7 @@
         android:layout_below="@+id/user_case_detail_cnic"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#1b8d1b"
         />
     <TextView
         android:id="@+id/user_case_detail_amount"
@@ -67,7 +67,7 @@
         android:layout_below="@+id/user_case_detail_account"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="#1b8d1b" />
     <Button
         android:id="@+id/donate"
         android:layout_width="200dp"

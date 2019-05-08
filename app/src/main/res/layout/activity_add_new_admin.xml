@@ -18,8 +18,8 @@
         android:layout_marginRight="15dp"
         android:hint="Username"
         android:inputType="text"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#1b8d1b"
+        android:textColorHint="#1b8d1b"
         android:textSize="17sp"
         android:textStyle="bold"/>
 
@@ -35,8 +35,8 @@
         android:layout_marginRight="15dp"
         android:hint="Full Name"
         android:inputType="text"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#1b8d1b"
+        android:textColorHint="#1b8d1b"
         android:textSize="17sp"
         android:textStyle="bold"/>
 
@@ -52,8 +52,8 @@
         android:layout_marginRight="15dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#1b8d1b"
+        android:textColorHint="#1b8d1b"
         android:textSize="17sp"
         android:textStyle="bold"/>
 
@@ -69,8 +69,8 @@
         android:layout_marginRight="15dp"
         android:hint="Phone Number"
         android:inputType="number"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#1b8d1b"
+        android:textColorHint="#1b8d1b"
         android:textSize="17sp"
         android:textStyle="bold"/>
     <EditText
@@ -85,8 +85,8 @@
         android:layout_marginTop="10dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#1b8d1b"
+        android:textColorHint="#1b8d1b"
         android:textSize="17sp"
         android:textStyle="bold"/>
 
@@ -103,7 +103,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Create Admin Account"
-        android:textColor="@android:color/white"/>
+        android:textColor="#000000"/>
 
 
 </RelativeLayout>

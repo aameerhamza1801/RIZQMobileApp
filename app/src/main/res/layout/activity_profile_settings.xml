@@ -10,7 +10,7 @@
         android:id="@+id/ab_psettings"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark">
+        android:background="#f3feaf">
         <android.support.v7.widget.Toolbar
             android:id="@+id/tb_psettings"
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Close"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_alignParentStart="true"/>
@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Update"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginRight="10dp"
