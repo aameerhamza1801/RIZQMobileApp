@@ -10,37 +10,39 @@
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/rizq"
         />
+
     <TextView
         android:id="@+id/tv_tag1"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="88dp"
-        android:layout_marginTop="160dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="401dp"
+        android:layout_marginEnd="32dp"
         android:text="END"
         android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="32sp"
-        android:textColor="#ffe600"/>
+        android:textColor="#ffe600"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/tv_tag2"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="88dp"
-        android:layout_marginTop="195dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="466dp"
+        android:layout_marginEnd="86dp"
         android:text="HUNGER"
         android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="38sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_main_login"
