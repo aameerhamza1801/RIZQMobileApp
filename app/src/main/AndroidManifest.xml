@@ -49,7 +49,9 @@
         <activity android:name=".AdminEventsDetailActivity" />
         <activity android:name=".PaypalPaymentActivity" />
         <activity android:name=".PaypalPaymentDetailsActivity" />
-        <activity android:name=".JazzCashActivity"></activity>
+        <activity android:name=".JazzCashActivity" />
+        <activity android:name=".AddNewAdminActivity" />
+        <activity android:name=".AdminProfileSettingsActivity"></activity>
     </application>
 
 </manifest>

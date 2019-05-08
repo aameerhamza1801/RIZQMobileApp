@@ -17,7 +17,6 @@ import com.example.talha.rizq.Prevalent.Prevalent;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,13 +27,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageActivity;
 
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileSettingsActivity extends AppCompatActivity {
+public class AdminProfileSettingsActivity extends AppCompatActivity {
 
     private CircleImageView profile_image;
     private TextView change_image, close, update, username;
@@ -49,24 +47,28 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_settings);
+        setContentView(R.layout.activity_admin_profile_settings);
 
-        storageProfilePicRef = FirebaseStorage.getInstance().getReference().child("Profile Pictures");
 
-        profile_image = (CircleImageView) findViewById(R.id.image_psettings);
-        change_image =(TextView) findViewById(R.id.change_image_psettings);
-        close =(TextView) findViewById(R.id.close_psettings);
-        update =(TextView) findViewById(R.id.update_psettings);
-        username =(TextView) findViewById(R.id.username_psettings);
-        fullname =(EditText) findViewById(R.id.fullname_psettings);
-        email =(EditText) findViewById(R.id.email_psettings);
-        phone =(EditText) findViewById(R.id.phone_psettings);
+        storageProfilePicRef = FirebaseStorage.getInstance().getReference().child("Admin Profile Pictures");
+
+        profile_image = (CircleImageView) findViewById(R.id.image_psettings_admin);
+        change_image =(TextView) findViewById(R.id.change_image_psettings_admin);
+        close =(TextView) findViewById(R.id.close_psettings_admin);
+        update =(TextView) findViewById(R.id.update_psettings_admin);
+        username =(TextView) findViewById(R.id.username_psettings_admin);
+        fullname =(EditText) findViewById(R.id.fullname_psettings_admin);
+        email =(EditText) findViewById(R.id.email_psettings_admin);
+        phone =(EditText) findViewById(R.id.phone_psettings_admin);
+
 
         UserInfoDisplay(profile_image,username,fullname,email,phone);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(AdminProfileSettingsActivity.this,AdminHomeNavActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -93,15 +95,16 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 checker="clicked";
                 CropImage.activity(imageUri).setAspectRatio(1,1)
-                        .start(ProfileSettingsActivity.this);
+                        .start(AdminProfileSettingsActivity.this);
             }
         });
+
     }
 
 
     private void UpdateOnlyUserInfo() {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Admins");
 
         HashMap<String,Object> userMap = new HashMap<>();
         userMap.put("username",username.getText().toString());
@@ -110,8 +113,8 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         userMap.put("phone",phone.getText().toString());
         ref.child(Prevalent.currentUser.getUsername()).updateChildren(userMap);
 
-        startActivity(new Intent(ProfileSettingsActivity.this,HomeActivity.class));
-        Toast.makeText(ProfileSettingsActivity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(AdminProfileSettingsActivity.this,HomeActivity.class));
+        Toast.makeText(AdminProfileSettingsActivity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
         finish();
 
     }
@@ -126,7 +129,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(this,"Error. Try Again!",Toast.LENGTH_SHORT);
-            startActivity(new Intent(ProfileSettingsActivity.this,ProfileSettingsActivity.class));
+            startActivity(new Intent(AdminProfileSettingsActivity.this,ProfileSettingsActivity.class));
         }
     }
 
@@ -174,7 +177,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                         Uri downloadUrl = task.getResult();
                         myUrl = downloadUrl.toString();
 
-                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Admins");
 
                         HashMap<String, Object> userMap = new HashMap<>();
                         userMap.put("username",username.getText().toString());
@@ -185,13 +188,13 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                         ref.child(Prevalent.currentUser.getUsername()).updateChildren(userMap);
 
                         progressDialog.dismiss();
-                        startActivity(new Intent(ProfileSettingsActivity.this,HomeActivity.class));
-                        Toast.makeText(ProfileSettingsActivity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AdminProfileSettingsActivity.this,AdminHomeNavActivity.class));
+                        Toast.makeText(AdminProfileSettingsActivity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     else {
                         progressDialog.dismiss();
-                        Toast.makeText(ProfileSettingsActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminProfileSettingsActivity.this, "Error!", Toast.LENGTH_SHORT).show();
 
                     }
                 }
@@ -199,7 +202,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         }
 
         else {
-            Toast.makeText(ProfileSettingsActivity.this, "Image not selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminProfileSettingsActivity.this, "Image not selected", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -238,4 +241,5 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             }
         });
     }
+
 }
