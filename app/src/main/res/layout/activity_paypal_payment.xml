@@ -6,6 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PaypalPaymentActivity">
+
+    <ImageView
+        android:id="@+id/paypal"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/paypal"
+        />
+
     <EditText
         android:id="@+id/paypal_amount"
         android:layout_width="300dp"
