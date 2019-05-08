@@ -11,9 +11,10 @@
         android:id="@+id/register_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/rizq"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="40dp"
+        android:src="@drawable/rizq" />
 
     <EditText
         android:id="@+id/register_username_input"
@@ -73,7 +74,7 @@
         android:layout_below="@+id/register_email_input"
         android:background="@drawable/input_text_design"
         android:padding="19dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:hint="Phone Number"
@@ -91,7 +92,7 @@
         android:padding="19dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@color/colorPrimaryDark"
@@ -104,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/register_password_input"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/buttons"

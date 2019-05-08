@@ -11,8 +11,9 @@
         android:id="@+id/login_logo"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/rizq" />
 
     <EditText
