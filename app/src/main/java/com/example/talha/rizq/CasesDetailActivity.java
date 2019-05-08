@@ -91,7 +91,7 @@ public class CasesDetailActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("add_case", 3);
+        intent.putExtra("add_case", 2);
         startActivity(intent);
     }
 

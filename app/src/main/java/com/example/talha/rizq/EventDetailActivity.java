@@ -111,6 +111,7 @@ public class EventDetailActivity extends AppCompatActivity {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(EventDetailActivity.this, "Added to myEvents List", Toast.LENGTH_SHORT).show();
                                                 Intent intent = new Intent(EventDetailActivity.this,HomeActivity.class);
+                                                intent.putExtra("add_case", 1);
                                                 startActivity(intent);
                                             }
                                         }
