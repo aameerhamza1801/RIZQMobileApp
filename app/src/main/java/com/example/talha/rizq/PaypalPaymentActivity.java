@@ -24,14 +24,19 @@ import java.math.BigDecimal;
 public class PaypalPaymentActivity extends AppCompatActivity {
 
     public static final int PAYPAL_REQUEST_CODE = 7171;
+
+
     private String cid = "";
 
 
     private static PayPalConfiguration configuration= new PayPalConfiguration().
             environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).
             clientId(Config.PAYPAL_CLIENT_ID);
-    EditText amount;
+
     Button pay;
+
+    EditText amount;
+
     String amt = "";
 
     @Override
@@ -42,7 +47,7 @@ public class PaypalPaymentActivity extends AppCompatActivity {
 
         cid = getIntent().getStringExtra("cid");
 
-        // Start Paypal Service
+        // Start Paypal Service/Activity
         Intent intent = new Intent(this,PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,configuration);
         startService(intent);
@@ -80,8 +85,8 @@ public class PaypalPaymentActivity extends AppCompatActivity {
                         String paymentDetails = confirmation.toJSONObject().toString(4);
 
                         startActivity(new Intent(this,PaypalPaymentDetailsActivity.class).
-                                putExtra("Payment Details",paymentDetails).
                                 putExtra("Payment Amount",amt).
+                                putExtra("Payment Details",paymentDetails).
                                 putExtra("cid",cid)
                         );
                     } catch (JSONException e) {
@@ -90,10 +95,16 @@ public class PaypalPaymentActivity extends AppCompatActivity {
                 }
             }
             else if(resultCode==Activity.RESULT_CANCELED) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
+
+
+                Toast.makeText(this, "Transaction Cancelled! ", Toast.LENGTH_SHORT).show();
 
             } else if(resultCode == PaymentActivity.RESULT_EXTRAS_INVALID){
-                Toast.makeText(this, "Invalid Inputs", Toast.LENGTH_SHORT).show();
+
+
+                Toast.makeText(this, "Invalid Inputs, Try again ", Toast.LENGTH_SHORT).show();
+
+                
             }
 
         }

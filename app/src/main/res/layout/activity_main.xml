@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/rizq"
         />
     <TextView
         android:id="@+id/tv_tag1"
