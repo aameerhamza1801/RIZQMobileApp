@@ -58,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
         //  Rotation Animation
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(logo, "rotationY", 0.0f, 360f);
+        /*ObjectAnimator animation = ObjectAnimator.ofFloat(logo, "rotationY", 0.0f, 360f);
         animation.setDuration(3600);
         animation.setRepeatCount(ObjectAnimator.INFINITE);
         animation.setInterpolator(new AccelerateDecelerateInterpolator());
-        animation.start();
+        animation.start();*/
+
+        rotationanimation(logo,"rotationY",0.0f,360f,4000);
 
         // Translation Animation
 
@@ -99,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
                 loadingBar.show();
             }
         }
+    }
+
+    private void rotationanimation(View v,String property,float value1,float value2,int dur){
+        ObjectAnimator animation = ObjectAnimator.ofFloat(v, property, value1, value2);
+        animation.setDuration(dur);
+        animation.setRepeatCount(ObjectAnimator.INFINITE);
+        animation.setInterpolator(new AccelerateDecelerateInterpolator());
+        animation.start();
     }
 
     private void translateanimation(int fromx,int tox,int fromy,int toy,int dur,View v){
