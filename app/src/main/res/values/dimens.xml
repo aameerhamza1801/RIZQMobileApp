@@ -10,4 +10,5 @@
     <dimen name="img_width_height">120dp</dimen>
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_padding">40dp</dimen>
+    <integer name="animation_duration_medium">300</integer>
 </resources>

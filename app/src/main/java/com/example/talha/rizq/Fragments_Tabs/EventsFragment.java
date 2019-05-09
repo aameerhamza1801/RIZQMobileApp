@@ -4,6 +4,7 @@ package com.example.talha.rizq.Fragments_Tabs;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +20,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.talha.rizq.EventDetailActivity;
 import com.example.talha.rizq.Global.GlobalVariables;
@@ -62,10 +67,9 @@ public class EventsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Events");
-
         final EditText inputSearch = (EditText) view.findViewById(R.id.inputSearch);
 
-
+        
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,6 +90,9 @@ public class EventsFragment extends Fragment {
                         new FirebaseRecyclerAdapter<Events, EventViewHolder>(options1) {
                             @Override
                             protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull final Events model) {
+
+                                holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                                 holder.event_desc.setText(model.getDescription());
                                 holder.event_loc.setText("Location :"+model.getLocation());
                                 holder.event_time.setText("Time : "+model.getTime());
@@ -111,6 +118,7 @@ public class EventsFragment extends Fragment {
                         };
                 recyclerView.setAdapter(adapter1);
                 adapter1.startListening();
+                //runAnimation(recyclerView);
             }
 
             @Override
@@ -200,6 +208,9 @@ public class EventsFragment extends Fragment {
                 new FirebaseRecyclerAdapter<Events, EventViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull final Events model) {
+
+                        holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                         holder.event_desc.setText(model.getDescription());
                         holder.event_loc.setText("Location :"+model.getLocation());
                         holder.event_time.setText("Time : "+model.getTime());
@@ -226,5 +237,19 @@ public class EventsFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
+        //runAnimation(recyclerView);
+
+
+
+
     }
+
+    /*private void runAnimation(RecyclerView recyclerView) {
+        final Context context = recyclerView.getContext();
+        final LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context,R.anim.layout_falldown);
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }*/
 }
