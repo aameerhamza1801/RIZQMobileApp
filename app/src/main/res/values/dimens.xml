@@ -11,4 +11,5 @@
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_padding">40dp</dimen>
     <integer name="animation_duration_medium">300</integer>
+    <integer name="animation_duration_slow">1000</integer>
 </resources>
