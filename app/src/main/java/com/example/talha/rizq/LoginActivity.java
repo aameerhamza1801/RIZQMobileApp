@@ -1,5 +1,6 @@
 package com.example.talha.rizq;
 
+import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView admin, not_admin, forgot;
     private ProgressDialog loadingBar;
     private String parentDbName="Users";
+    private ImageView logo;
     SharedPreferences settings;
 
     @Override
@@ -45,9 +49,13 @@ public class LoginActivity extends AppCompatActivity {
         admin = (TextView) findViewById(R.id.admin_panel_link);
         not_admin = (TextView) findViewById(R.id.not_admin_panel_link);
         chkbox = (CheckBox) findViewById(R.id.remember_me_chkb);
+        logo = (ImageView) findViewById(R.id.login_logo);
         Paper.init(this);
 
         loadingBar = new ProgressDialog(this);
+
+
+        rotationanimation(logo,"rotationY",0.0f,360f,4000);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +83,14 @@ public class LoginActivity extends AppCompatActivity {
                 parentDbName = "Users";
             }
         });
+    }
+
+    private void rotationanimation(View v,String property,float value1,float value2,int dur){
+        ObjectAnimator animation = ObjectAnimator.ofFloat(v, property, value1, value2);
+        animation.setDuration(dur);
+        animation.setRepeatCount(ObjectAnimator.INFINITE);
+        animation.setInterpolator(new AccelerateDecelerateInterpolator());
+        animation.start();
     }
 
 

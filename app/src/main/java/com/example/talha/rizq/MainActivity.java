@@ -58,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         //  Rotation Animation
 
-        /*ObjectAnimator animation = ObjectAnimator.ofFloat(logo, "rotationY", 0.0f, 360f);
-        animation.setDuration(3600);
-        animation.setRepeatCount(ObjectAnimator.INFINITE);
-        animation.setInterpolator(new AccelerateDecelerateInterpolator());
-        animation.start();*/
 
         rotationanimation(logo,"rotationY",0.0f,360f,4000);
 
