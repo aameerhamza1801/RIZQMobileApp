@@ -29,7 +29,7 @@
             android:layout_below="@+id/admin_case_image"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#1b8d1b"
             />
 
         <TextView
@@ -40,7 +40,7 @@
             android:text="Description"
             android:textAlignment="center"
             android:textSize="18dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#1b8d1b"
             />
 
         <TextView
@@ -53,7 +53,7 @@
             android:textAlignment="textStart"
             android:layout_marginLeft="10dp"
             android:textSize="16dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#1b8d1b"
             />
         <LinearLayout
             android:id="@+id/admin_ll_amount"
@@ -70,7 +70,7 @@
                 android:textAlignment="textStart"
                 android:layout_marginLeft="10dp"
                 android:textSize="16dp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#1b8d1b"
                 />
             <TextView
                 android:id="@+id/admin_case_amount"
@@ -82,7 +82,7 @@
                 android:textAlignment="textStart"
                 android:layout_marginLeft="10dp"
                 android:textSize="16dp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#1b8d1b"
                 />
         </LinearLayout>
 

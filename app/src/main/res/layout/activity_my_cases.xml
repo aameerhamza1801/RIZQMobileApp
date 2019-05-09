@@ -11,14 +11,14 @@
         android:id="@+id/case_rl1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="#f3feaf"
         android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/total_cases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:text="Total Cases = "
             android:textSize="20dp"
             android:textAlignment="center"

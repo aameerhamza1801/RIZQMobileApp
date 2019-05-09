@@ -10,37 +10,39 @@
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/rizq"
-        />
+        android:layout_marginTop="70dp"
+        android:src="@drawable/rizq" />
+
     <TextView
         android:id="@+id/tv_tag1"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_logo"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="88dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="32dp"
         android:text="END"
         android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="32sp"
-        android:textColor="#ffe600"/>
+        android:textColor="#f3feaf"
+        android:textSize="50sp"
+        android:textStyle="bold|italic" />
+
     <TextView
         android:id="@+id/tv_tag2"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tag1"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="88dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="86dp"
         android:text="HUNGER"
         android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="38sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="#1b8d1b"
+        android:textSize="50sp"
+        android:textStyle="bold|italic" />
 
     <Button
         android:id="@+id/btn_main_login"
@@ -55,8 +57,8 @@
         android:padding="20dp"
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:text="Already have an account?"
-        android:textColor="@android:color/white"/>
+        android:text="Already have an Account ?"
+        android:textColor="#000000"/>
     <Button
         android:id="@+id/btn_main_register"
         android:layout_width="match_parent"

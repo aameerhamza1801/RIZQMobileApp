@@ -24,7 +24,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Cases"
-        android:textColor="@android:color/white"
+        android:textColor="#000000"
         />
     <Button
         android:id="@+id/admin_events"
@@ -39,7 +39,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Events"
-        android:textColor="@android:color/white"
+        android:textColor="#000000"
         />
     <Button
         android:id="@+id/admin_logout"
@@ -54,7 +54,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Logout"
-        android:textColor="@android:color/white"
+        android:textColor="#000000"
         />
     <Button
         android:id="@+id/admin_nave_btn"
@@ -69,7 +69,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Nav"
-        android:textColor="@android:color/white"
+        android:textColor="#000000"
         />
 
 </RelativeLayout>
