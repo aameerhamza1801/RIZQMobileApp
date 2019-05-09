@@ -69,7 +69,7 @@ public class EventsFragment extends Fragment {
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Events");
         final EditText inputSearch = (EditText) view.findViewById(R.id.inputSearch);
 
-        
+
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -83,7 +83,7 @@ public class EventsFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 FirebaseRecyclerOptions<Events> options1 =
                         new FirebaseRecyclerOptions.Builder<Events>()
-                                .setQuery(ProductsRef.orderByChild("location").startAt(s.toString()),Events.class)
+                                .setQuery(ProductsRef.orderByChild("location").startAt(s.toString().toLowerCase()),Events.class)
                                 .build();
 
                 FirebaseRecyclerAdapter<Events,EventViewHolder> adapter1 =

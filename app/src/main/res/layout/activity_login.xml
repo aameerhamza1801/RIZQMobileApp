@@ -10,11 +10,10 @@
     <ImageView
         android:id="@+id/login_logo"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/rizq" />
+        android:layout_height="100dp"
+        android:src="@drawable/rizq"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
 
     <EditText
         android:id="@+id/login_username_input"
@@ -22,14 +21,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_logo"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="59dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/input_text_design"
         android:hint="Username"
         android:inputType="text"
         android:padding="20dp"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -39,15 +38,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_username_input"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="31dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
         android:background="@drawable/input_text_design"
         android:hint="Password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -55,9 +53,8 @@
         android:id="@+id/linear_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/login"
         android:layout_below="@+id/login_password_input"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <com.rey.material.widget.CheckBox
@@ -68,18 +65,18 @@
             android:layout_marginLeft="17dp"
             android:gravity="center_vertical"
             android:text="Remember me"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:cbd_strokeColor="#f3feaf" />
+            app:cbd_strokeColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/forget_password_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
-            android:text="Forgot Password ?"
-            android:textColor="#ffffff"
+            android:text="Forgot Password?"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -90,30 +87,30 @@
         android:layout_width="407dp"
         android:layout_height="65dp"
         android:layout_above="@+id/not_admin_panel_link"
+
         android:layout_marginStart="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttons"
         android:padding="17dp"
         android:text="Login"
         android:textAllCaps="false"
-        android:textColor="#000000"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/admin_panel_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="23dp"
+        android:layout_marginBottom="10dp"
         android:text="Admin ?"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -127,7 +124,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="10dp"
         android:text="Not an Admin ?"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="invisible" />

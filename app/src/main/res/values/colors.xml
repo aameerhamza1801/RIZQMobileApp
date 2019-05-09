@@ -5,6 +5,10 @@
     <color name="colorAccent">#D81B60</color>
     <color name="darkModeText">#D81B60</color>
     <color name="darkModePrimary">#D81B60</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="bg_card_dark">#0e0e0e</color>
+    <color name="bg_card">#f6f6f6</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>
