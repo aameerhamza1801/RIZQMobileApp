@@ -6,13 +6,25 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".HomeActivity"
+    android:background="@drawable/homeback"
     tools:showIn="@layout/app_bar_home">
+
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:text="Inspired by a mother, taken forward by her three sons, Rizq is on a mission to end hunger from the world."
+        android:textAlignment="textStart"
+        android:textStyle = "bold"
+        android:textColor="#0A0A0A"
+        android:textSize="20dp" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
-    </android.support.v4.view.ViewPager>
+        android:layout_below="@+id/toolbar"></android.support.v4.view.ViewPager>
 
 </RelativeLayout>

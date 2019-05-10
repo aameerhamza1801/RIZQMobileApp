@@ -23,7 +23,7 @@
         android:inputType="textMultiLine"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:hint="Add Needy Name Here"
+        android:hint="Enter Your Name Here"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/input_text_design"/>
@@ -35,7 +35,7 @@
         android:inputType="textMultiLine"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:hint="Add Description Here"
+        android:hint="Describe Your Reason Here"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/input_text_design"/>
