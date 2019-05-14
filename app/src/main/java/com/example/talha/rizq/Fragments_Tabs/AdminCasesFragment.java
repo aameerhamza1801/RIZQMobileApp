@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import com.example.talha.rizq.AdminCasesDetailActivity;
@@ -79,6 +80,9 @@ public class AdminCasesFragment extends Fragment {
                         new FirebaseRecyclerAdapter<Cases, AdminCasesViewHolder>(options1) {
                             @Override
                             protected void onBindViewHolder(@NonNull AdminCasesViewHolder holder, int position, @NonNull final Cases model) {
+
+                                holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                                 holder.case_name.setText(model.getNeedy_name());
                                 holder.case_desc.setText(model.getDescription());
                                 holder.case_account.setText(model.getAccount());
@@ -138,6 +142,9 @@ public class AdminCasesFragment extends Fragment {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminCasesViewHolder holder, int position, @NonNull final Cases model)
                     {
+
+                        holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                         holder.case_name.setText(model.getNeedy_name());
                         holder.case_desc.setText(model.getDescription());
                         holder.case_account.setText(model.getAccount());

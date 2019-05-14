@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import com.example.talha.rizq.AddNewCase;
@@ -81,6 +82,9 @@ public class AdminEventsFragment extends Fragment {
                         new FirebaseRecyclerAdapter<Events, AdminEventsViewHolder>(options1) {
                             @Override
                             protected void onBindViewHolder(@NonNull AdminEventsViewHolder holder, int position, @NonNull final Events model) {
+
+                                holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                                 holder.event_desc.setText(model.getDescription());
                                 holder.event_loc.setText("Location :" + model.getLocation());
                                 holder.event_time.setText("Time : " + model.getTime());
@@ -148,6 +152,9 @@ public class AdminEventsFragment extends Fragment {
                 new FirebaseRecyclerAdapter<Events, AdminEventsViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminEventsViewHolder holder, int position, @NonNull final Events model) {
+
+                        holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                         holder.event_desc.setText(model.getDescription());
                         holder.event_loc.setText("Location :"+model.getLocation());
                         holder.event_time.setText("Time : "+model.getTime());
