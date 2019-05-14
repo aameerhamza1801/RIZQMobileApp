@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -95,6 +96,9 @@ public class CasesFragment extends Fragment {
                         new FirebaseRecyclerAdapter<Cases, CasesViewHolder>(options1) {
                             @Override
                             protected void onBindViewHolder(@NonNull CasesViewHolder holder, int position, @NonNull final Cases model) {
+
+                                holder.card_sup.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                                 holder.case_name.setText(model.getNeedy_name());
                                 holder.case_desc.setText(model.getDescription());
                                 holder.case_account.setText(model.getAccount());
@@ -174,6 +178,9 @@ public class CasesFragment extends Fragment {
                     @Override
                     protected void onBindViewHolder(@NonNull CasesViewHolder holder, int position, @NonNull final Cases model)
                     {
+
+                            holder.card_sup.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
+
                             holder.case_name.setText(model.getNeedy_name());
                             holder.case_desc.setText(model.getDescription());
                             holder.case_account.setText(model.getAccount());

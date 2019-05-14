@@ -91,7 +91,7 @@ public class EventsFragment extends Fragment {
                             @Override
                             protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull final Events model) {
 
-                                holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.trans_rot_scale_animation));
+                                holder.card.setAnimation(AnimationUtils.loadAnimation(recyclerView.getContext(),R.anim.fade_scale_animation));
 
                                 holder.event_desc.setText(model.getDescription());
                                 holder.event_loc.setText("Location :"+model.getLocation());
