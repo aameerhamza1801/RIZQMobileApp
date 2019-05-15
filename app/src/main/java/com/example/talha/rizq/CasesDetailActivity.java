@@ -153,7 +153,7 @@ public class CasesDetailActivity extends AppCompatActivity {
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5,10,5,5);
 
-        pieChart.setDragDecelerationFrictionCoef(0.99f);
+        pieChart.setDragDecelerationFrictionCoef(0.90f);
 
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColor(Color.TRANSPARENT);
