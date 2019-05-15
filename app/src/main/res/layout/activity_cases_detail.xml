@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CasesDetailActivity">
+    tools:context=".CasesDetailActivity"
+    android:background="@drawable/donations1">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
     <ImageView
         android:id="@+id/user_case_detail_image"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:scaleType="centerCrop"/>
 
     <TextView

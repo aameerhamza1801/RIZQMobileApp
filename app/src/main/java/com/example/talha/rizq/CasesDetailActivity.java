@@ -156,7 +156,7 @@ public class CasesDetailActivity extends AppCompatActivity {
         pieChart.setDragDecelerationFrictionCoef(0.99f);
 
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(Color.WHITE);
+        pieChart.setHoleColor(Color.TRANSPARENT);
         pieChart.setTransparentCircleRadius(65f);
 
         pieChart.setCenterText(collected_amount+" / "+needed_amount);
