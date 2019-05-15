@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CasesDetailActivity"
-    android:background="@drawable/donations1">
+    android:background="@android:color/holo_purple">
 
 <RelativeLayout
     android:layout_width="match_parent"
