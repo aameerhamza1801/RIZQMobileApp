@@ -97,7 +97,7 @@
         android:padding="15dp"
         android:text="Login"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
 
     <TextView
