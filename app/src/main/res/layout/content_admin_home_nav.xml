@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AdminHomeNavActivity"
-    android:background="@drawable/homeback"
     tools:showIn="@layout/app_bar_admin_home_nav">
 
     <android.support.v4.view.ViewPager

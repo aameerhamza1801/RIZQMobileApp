@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/user_case_detail_image"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"/>
 
     <TextView

@@ -3,6 +3,7 @@ package com.example.talha.rizq;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,8 +22,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class myEventsActivity extends AppCompatActivity {
 
@@ -43,7 +48,28 @@ public class myEventsActivity extends AppCompatActivity {
 
         total_events = (TextView) findViewById(R.id.total_events);
 
+        EventCount();
+    }
 
+    private void EventCount() {
+        final DatabaseReference myeventsCountRef = FirebaseDatabase.getInstance().getReference().child("My Events").
+                child("Users").child(Prevalent.currentUser.getUsername()).child("myEvents");
+
+        myeventsCountRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int count = 0;
+                for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                    count +=1;
+                }
+                total_events.setText(Integer.toString(count));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -63,8 +89,8 @@ public class myEventsActivity extends AppCompatActivity {
                 holder.myevent_loca.setText("Location : "+model.getLocation());
                 holder.myevent_tim.setText("Time : "+model.getTime());
 
-                numEvents=numEvents + 1;
-                total_events.setText(String.valueOf(numEvents));
+                //numEvents=numEvents + 1;
+                //total_events.setText(String.valueOf(numEvents));
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -92,9 +118,10 @@ public class myEventsActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
                                                         numEvents = numEvents -1;
-                                                        total_events.setText(String.valueOf(numEvents));
-                                                        Toast.makeText(myEventsActivity.this, "Event Removed Succesfully", Toast.LENGTH_SHORT).show();
 
+                                                        //total_events.setText(String.valueOf(numEvents));
+                                                        Toast.makeText(myEventsActivity.this, "Event Removed Succesfully", Toast.LENGTH_SHORT).show();
+                                                        EventCount();
                                                     }
                                                 }
                                             });
