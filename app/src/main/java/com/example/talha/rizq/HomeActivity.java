@@ -74,7 +74,7 @@ public class HomeActivity extends AppCompatActivity
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Home");
+        toolbar.setTitle("RIZQ");
         setSupportActionBar(toolbar);
 
         int defaultValue = 0;

@@ -70,16 +70,6 @@
             android:textStyle="bold"
             app:cbd_strokeColor="@color/colorPrimaryDark" />
 
-        <TextView
-            android:id="@+id/forget_password_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:text="Forgot Password?"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
     </LinearLayout>
 
     <Button

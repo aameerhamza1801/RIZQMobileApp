@@ -88,9 +88,7 @@ public class CasesDetailActivity extends AppCompatActivity {
                             intent.putExtra("cid",cid);
                             startActivity(intent);
                         }
-                        else if(which == 2){
 
-                        }
                     }
                 });
                 builder.show();
