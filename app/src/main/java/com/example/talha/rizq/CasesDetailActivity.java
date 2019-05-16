@@ -70,10 +70,10 @@ public class CasesDetailActivity extends AppCompatActivity {
                 CharSequence options[] = new CharSequence[]{
                         "Paypal",
                         "Jazz Cash",
-                        "Through Rizq"
+
                 };
                 AlertDialog.Builder builder = new AlertDialog.Builder(CasesDetailActivity.this);
-                builder.setTitle("Payment Options :");
+                builder.setTitle("Select a Payment Option :");
 
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
